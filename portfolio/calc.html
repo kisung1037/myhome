@@ -34,19 +34,19 @@
                     <button type="button" onclick="clearText()">C</a>
                 </div>
                 <div class="btn">
-                    <button type="button" onclick="addNum(this)">7</button>
-                    <button type="button" onclick="addNum(this)">8</button>
-                    <button type="button" onclick="addNum(this)">9</button>
-                    <button type="button" onclick="addSign(this)">*</button>
-                    <button type="button" onclick="addNum(this)" style="clear: both;">4</button>
-                    <button type="button" onclick="addNum(this)">5</button>
-                    <button type="button" onclick="addNum(this)">6</button>
-                    <button type="button" onclick="addSign(this)">+</button>
-                    <button type="button" onclick="addNum(this)" style="clear: both;">1</button>
-                    <button type="button" onclick="addNum(this)">2</button>
-                    <button type="button" onclick="addNum(this)">3</button>
-                    <button type="button" onclick="addSign(this)">-</button>
-                    <button type="button" onclick="addSign(this),showResult()">=</button>
+                    <button type="button" onclick="addStr(this)" data-num="7">7</button>
+                    <button type="button" onclick="addStr(this)" data-num='8'>8</button>
+                    <button type="button" onclick="addStr(this)" data-num="9">9</button>
+                    <button type="button" onclick="addStr(this)" data-num="*">*</button>
+                    <button type="button" onclick="addStr(this)" data-num="4"style="clear: both;">4</button>
+                    <button type="button" onclick="addStr(this)" data-num="5">5</button>
+                    <button type="button" onclick="addStr(this)" data-num="6">6</button>
+                    <button type="button" onclick="addStr(this)" data-num="+">+</button>
+                    <button type="button" onclick="addStr(this)" data-num="1"style="clear: both;">1</button>
+                    <button type="button" onclick="addStr(this)" data-num="2">2</button>
+                    <button type="button" onclick="addStr(this)" data-num="3">3</button>
+                    <button type="button" onclick="addStr(this)" data-num="-">-</button>
+                    <button type="button" onclick="addStr(this),showResult()"data-num="=">=</button>
                 </div>
             </div>
         </section>
@@ -58,51 +58,66 @@
         </footer>
 </body>
 <script>
-    var history_arr=[];
-    var result= "";
-    // var text="";
-
-function addNum(el) {
-    var str = el.textContent;
-    history_arr.push(str);
-    showlist();
-
-    // text += str;
-}
-function addSign(el) {
-    var str = el.textContent;
-    if(str !== "=") { history_arr.push(str) };
-    showlist();
-
-    if (str === "="){
-        var txt = history_arr.join("");
-        var evalStr = eval(txt);
-        result += evalStr;
+    var MyEnv ={
+        history_arr: [],
+        result : "",
+        el : document.getElementById("demo"),
+        el1 : document.getElementById("textresult"),
     }
+
+// function addNum(el) {
+//     var str = el.textContent;
+//     MyEnv.history_arr.push(str);
+//     showlist();
+
+//     // text += str;
+// }
+// function addSign(el) {
+//     var str = el.textContent;
+//     if(str !== "=") { MyEnv.history_arr.push(str) };
+//     showlist();
+
+//     if (str === "="){
+//         var txt = MyEnv.history_arr.join("");
+//         var evalStr = eval(txt);
+//         MyEnv.result += evalStr;
+//     }
+// }
+
+function addStr(el) {
+    var str = el.dataset.num;
+    if(str !== "=") { MyEnv.history_arr.push(str) 
+    }else if (str === "="){
+        var txt = MyEnv.history_arr.join("");
+        var evalStr = eval(txt);
+        MyEnv.result += evalStr;
+    }
+    if (str == "+" || str == "-"|| str == "*" || str == "/") {
+        MyEnv.result ="";
+        MyEnv.el1.innerHTML = MyEnv.result;
+    }
+    showlist();
 }
+
 function showlist() {
-    var el = document.getElementById("demo");
-    el.innerHTML = history_arr.join("")
+    MyEnv.el.innerHTML = MyEnv.history_arr.join("")
 }
 function showResult() {
-    var el = document.getElementById("textresult");
-    el.innerHTML = result;
+    MyEnv.el1.innerHTML = MyEnv.result;
 }
 
 function clearText() {
-    history_arr=[];
-    result="";
-    var el = document.getElementById("textresult");
-    el.innerHTML = result;
-    var el1 = document.getElementById("demo");
-    el1.innerHTML = history_arr.join("")
+    MyEnv.history_arr=[];
+    MyEnv.result="";
+    MyEnv.el1.innerHTML = MyEnv.result;
+    MyEnv.el.innerHTML = MyEnv.history_arr.join("")
 }
 function backText() {
-    var el = document.getElementById("demo");
-    history_arr.pop();
-    el.innerHTML = history_arr.join("");
-    var el1 = document.getElementById("textresult");
-    el1.innerHTML = result;
+    MyEnv.history_arr.pop();
+    MyEnv.el.innerHTML = MyEnv.history_arr.join("");
+    MyEnv.result="";
+    MyEnv.el1.innerHTML = MyEnv.result;
+    
 }
 
 </script>
