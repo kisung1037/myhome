@@ -1,0 +1,92 @@
+.calc {
+    background-color: white;
+    width: 380px;
+    height: 350px;
+    margin:auto;
+}
+
+.screen {
+    padding-left: 25px;
+    width: 350px;
+    height: 50px;
+    background-color: black;
+    display: block;
+    border-radius: 20px;
+    margin: auto;
+    margin-bottom: 10px;
+    font-size: 50px;
+    text-align: right;
+}
+.disp {
+    width: 300px;
+    height: 25px;
+    background-color: white;
+    text-align: right;
+    font-size: 25px;
+}
+#textresult {
+    width: 300px;
+    height: 25px;
+    background-color: white;
+    text-align: right;
+    font-size: 25px;
+}
+.top_sign button {
+    width: 105px;
+    height: 35px;
+    display: block;
+    background-color: black;
+    float: left;
+    border-radius: 20px;
+    font-size: 25px;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    margin-left: 5px;
+
+}
+
+
+.btn button {
+    width: 90px;
+    height: 90px;
+    display: block;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    font-size: 50px;
+    margin: 5px;
+    float: left;
+    
+}
+
+
+.calc .btn button {
+    background-color: coral;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    font-size: 2em;
+}
+
+.btn {
+    height: 360px;
+    margin-left: 5px;
+    margin-right: 5px;
+    /* border : 1px solid red; */
+    margin-top : 10px;
+    padding: 15px;
+}
+
+
+.top_sign {
+    width: 340px;
+    height: 40px;
+    /* border : 1px solid red; */
+    margin : auto;
+}
+
+.calc button:hover {
+    background-color: white;
+    color: black;
+}
