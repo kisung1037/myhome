@@ -29,7 +29,8 @@
                     <div id="textresult"></div>
                 </div>
                 <div class="top_sign">
-                    <button type="button">( )</a>
+                    <button type="button" onclick="addStr(this)" data-num="(">(</a>
+                    <button type="button" onclick="addStr(this)" data-num=")">)</a>
                     <button type="button" onclick="backText()">back</a>
                     <button type="button" onclick="clearText()">C</a>
                 </div>
@@ -63,6 +64,7 @@
         result : "",
         el : document.getElementById("demo"),
         el1 : document.getElementById("textresult"),
+        NumClicked : false,
     }
 
 // function addNum(el) {
@@ -84,20 +86,38 @@
 //     }
 // }
 
-function addStr(el) {
-    var str = el.dataset.num;
-    if(str !== "=") { MyEnv.history_arr.push(str) 
-    }else if (str === "="){
-        var txt = MyEnv.history_arr.join("");
+function addStr(x) {
+    
+    // if(str !== "=") {  MyEnv.history_arr.push(str) 
+    var str = x.dataset.num;
+    if (str === "="){
+        var txt =  MyEnv.history_arr.join("");
         var evalStr = eval(txt);
         MyEnv.result += evalStr;
     }
-    if (str == "+" || str == "-"|| str == "*" || str == "/") {
-        MyEnv.result ="";
-        MyEnv.el1.innerHTML = MyEnv.result;
+    // if (str === "+" || str === "-"|| str === "*" || str === "/") {
+    //     MyEnv.result ="";
+    //     MyEnv.el1.innerHTML = MyEnv.result;
+    // }
+   
+    if(MyEnv.NumClicked == false){
+        if(isNaN(str) == true){
+
+        }else{
+            MyEnv.history_arr.push(str);
+        }
+    }else{
+        MyEnv.history_arr.push(str);
+    }
+
+    if(isNaN(str) == true) { 
+        MyEnv.NumClicked = false;
+    }else{
+        MyEnv.NumClicked = true;
     }
     showlist();
 }
+
 
 function showlist() {
     MyEnv.el.innerHTML = MyEnv.history_arr.join("")
@@ -117,7 +137,6 @@ function backText() {
     MyEnv.el.innerHTML = MyEnv.history_arr.join("");
     MyEnv.result="";
     MyEnv.el1.innerHTML = MyEnv.result;
-    
 }
 
 </script>
