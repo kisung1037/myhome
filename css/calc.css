@@ -1,7 +1,7 @@
 .calc {
     background-color: white;
     width: 380px;
-    height: 350px;
+    height: 400px;
     margin:auto;
 }
 
@@ -32,7 +32,7 @@
     font-size: 25px;
 }
 .top_sign button {
-    width: 105px;
+    width: 75px;
     height: 35px;
     display: block;
     background-color: black;
@@ -48,8 +48,6 @@
 
 
 .btn button {
-    width: 90px;
-    height: 90px;
     display: block;
     color: white;
     text-align: center;
@@ -63,14 +61,16 @@
 
 .calc .btn button {
     background-color: coral;
-    width: 50px;
+    width: 70px;
     height: 50px;
     text-align: center;
     font-size: 2em;
+    border-radius: 20px;
+    text-decoration: none;
 }
 
 .btn {
-    height: 360px;
+    height: 400px;
     margin-left: 5px;
     margin-right: 5px;
     /* border : 1px solid red; */

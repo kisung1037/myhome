@@ -47,7 +47,10 @@
                     <button type="button" onclick="addStr(this)" data-num="2">2</button>
                     <button type="button" onclick="addStr(this)" data-num="3">3</button>
                     <button type="button" onclick="addStr(this)" data-num="-">-</button>
+                    <button type="button" onclick="addStr(this)" data-num="0">0</button>
+                    <button type="button" onclick="addStr(this)" data-num="00">00</button>
                     <button type="button" onclick="addStr(this),showResult()"data-num="=">=</button>
+                    <button type="button" onclick="addStr(this)" data-num="/">/</button>
                 </div>
             </div>
         </section>
@@ -90,6 +93,7 @@ function addStr(x) {
     
     // if(str !== "=") {  MyEnv.history_arr.push(str) 
     var str = x.dataset.num;
+    var lst_el = MyEnv.history_arr[MyEnv.history_arr-1];
     if (str === "="){
         var txt =  MyEnv.history_arr.join("");
         var evalStr = eval(txt);
@@ -100,7 +104,7 @@ function addStr(x) {
     //     MyEnv.el1.innerHTML = MyEnv.result;
     // }
    
-    if(MyEnv.NumClicked == false){
+    if (lst_el === "+" || lst_el === "-"|| lst_el === "*" || lst_el === "/"){
         if(isNaN(str) == true){
 
         }else{
@@ -110,11 +114,11 @@ function addStr(x) {
         MyEnv.history_arr.push(str);
     }
 
-    if(isNaN(str) == true) { 
-        MyEnv.NumClicked = false;
-    }else{
-        MyEnv.NumClicked = true;
-    }
+    // if(isNaN(str) == true) { 
+    //     MyEnv.NumClicked = false;
+    // }else{
+    //     MyEnv.NumClicked = true;
+    // }
     showlist();
 }
 
